@@ -1,0 +1,20 @@
+{
+	"name" : "cogipix/cogimixvimeo",
+	"type" : "symfony-bundle",
+	"authors" : [{
+			"name" : "Pierre-Louis FORT",
+			"email" : "plfort@cogipix.com"
+		}
+	],
+	"require" : {
+		"php" : ">=5.3.3",
+		 "vimeo/vimeo-api" : "1.1.*"
+	},
+	"autoload" : {
+		"psr-0" : {
+			"Cogipix\\CogimixVimeoBundle" : ""
+		}
+	},
+	"target-dir" : "Cogipix/CogimixVimeoBundle"
+
+}

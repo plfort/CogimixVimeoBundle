@@ -1,0 +1,14 @@
+<script src="https://f.vimeocdn.com/js/froogaloop2.min.js"></script>
+{% javascripts
+        '@CogimixVimeoBundle/Resources/assets/js/plugin-vimeo.js' filter="?yui_js"%}
+<script src="{{ asset_url }}"></script>
+{% endjavascripts %}
+
+<script>
+var loggerVimeo= JSLog.Register('CogimixVimeo');
+var vimeoLoadedDeferred= $.Deferred();
+function loadVimeo(){
+
+	return vimeoLoadedDeferred;
+}
+</script>

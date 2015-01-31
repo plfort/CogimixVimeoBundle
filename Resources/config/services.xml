@@ -1,0 +1,38 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    
+    <services>
+        
+           <service id="vimeo.client" class="Vimeo\Vimeo">
+               <argument type="string">%vimeo.api.client_id%</argument>
+               <argument type="string">%vimeo.api.client_secret%</argument>
+               <argument type="string">%vimeo.api.access_token%</argument>
+           </service>        
+           <service id="vimeo_music.search_service"  parent="abstract_music_search"  class="Cogipix\CogimixVimeoBundle\Services\VimeoMusicSearch">
+                 <argument type="service" id="vimeo_music.result_builder"/>
+                 <argument type="service" id="vimeo.client"/>
+                <tag name="cogimix.plugin" />
+           </service>
+            <service id="vimeo_music.result_builder" class="Cogipix\CogimixVimeoBundle\Services\ResultBuilder">
+                </service>
+                
+           <service id="vimeo_music.url_search" class="Cogipix\CogimixVimeoBundle\Services\VimeoUrlSearch">
+               <argument type="service" id="vimeo_music.result_builder"/>
+               <argument type="service" id="vimeo_music.search_service"/>
+                <tag name="cogimix.url_search" />
+           </service>
+           
+           <service id="vimeo_music.widget_renderer" class="Cogipix\CogimixVimeoBundle\ViewHooks\Widget\WidgetRenderer">
+                <tag name="cogimix.widget_renderer"/>
+           </service>
+           
+           <service id="vimeo_music.jsimport_renderer" class="Cogipix\CogimixVimeoBundle\ViewHooks\Javascript\JavascriptImportRenderer">
+                <tag name="cogimix.jsimport_renderer"/>
+           </service>
+    </services>
+  
+</container>
