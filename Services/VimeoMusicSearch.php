@@ -1,7 +1,6 @@
 <?php
 namespace Cogipix\CogimixVimeoBundle\Services;
 
-use Cogipix\CogimixCommonBundle\Entity\TrackResult;
 use Cogipix\CogimixCommonBundle\MusicSearch\AbstractMusicSearch;
 use Vimeo\Vimeo;
 class VimeoMusicSearch extends AbstractMusicSearch{
@@ -85,7 +84,7 @@ class VimeoMusicSearch extends AbstractMusicSearch{
     }
 
     public function getDefaultIcon(){
-        return 'bundles/cogimixvimeo/images/vimeo-icon.png';
+        return '/bundles/cogimixvimeo/images/vimeo-icon.png';
     }
 
     public function getResultTag(){

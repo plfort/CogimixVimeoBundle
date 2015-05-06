@@ -1,18 +1,18 @@
 <?php
 namespace Cogipix\CogimixVimeoBundle\Services;
 
-use Cogipix\CogimixCommonBundle\Entity\TrackResult;
+use Cogipix\CogimixCommonBundle\Entity\Song;
 
 class ResultBuilder{
 
 
     private $pictureHost = 'https://i.vimeocdn.com/video/';
-
+    private $defaultThumbnails = '/bundles/cogimixvimeo/images/vimeo-default.png';
     public function createFromVideoEntry($videoEntry){
 
         $item = null;
         if($videoEntry !== null ){
-            $item = new TrackResult();
+            $item = new Song();
             $item->setEntryId(substr($videoEntry['uri'], strrpos($videoEntry['uri'], '/') + 1));
 
             if(strstr($videoEntry['name'],'-' )!==false){
@@ -25,8 +25,8 @@ class ResultBuilder{
             }
 
             $item->setDuration($videoEntry['duration']);
-
-            if(isset($videoEntry['pictures']) & is_array($videoEntry['pictures'])){
+            $item->setThumbnails($this->defaultThumbnails);
+            if(isset($videoEntry['pictures']) && is_array($videoEntry['pictures'])){
                 if(isset($videoEntry['pictures']['uri'])){
                     $pictureId = substr($videoEntry['pictures']['uri'], strrpos($videoEntry['pictures']['uri'], '/') + 1);
                     $item->setThumbnails($this->pictureHost.$pictureId.'_200.jpg');

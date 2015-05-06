@@ -205,6 +205,7 @@ function vimeoPlayer(musicPlayer) {
 
 }
 
+iconMap['vimeo'] = '/bundles/cogimixvimeo/images/vimeo-icon.png';
 
 $("body").on('musicplayerReady',function(event){
 	event.musicPlayer.addPlugin('vimeo',new vimeoPlayer(event.musicPlayer));
@@ -217,4 +218,5 @@ function addVimeoPlugin(musicPlayer) {
 	//musicPlayer.plugin['vimeo'].onVimeoIframeAPIReady();
 	musicPlayer.play();
 }
+
 
