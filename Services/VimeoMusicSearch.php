@@ -20,8 +20,8 @@ class VimeoMusicSearch extends AbstractMusicSearch{
 
         $result = array();
         if(isset($responseBody['data']) && is_array($responseBody['data'])){
-            foreach($responseBody['data'] as $videoENtry){
-                $item= $this->resultBuilder->createFromVideoEntry($videoENtry);
+            foreach($responseBody['data'] as $videoEntry){
+                $item= $this->resultBuilder->createFromVideoEntry($videoEntry);
                 $result[]=$item;
             }
         }
@@ -40,7 +40,7 @@ class VimeoMusicSearch extends AbstractMusicSearch{
                 return $this->parseResponse($response['body']);
             }
         }catch(\Exception $ex){
-            $this->logger->err($ex);
+            $this->logger->error($ex);
 
         }
         return array();
